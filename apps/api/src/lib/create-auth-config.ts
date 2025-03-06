@@ -17,4 +17,4 @@ export default function createAuthConfig(env: AppEnv["Bindings"]): AuthConfig {
       }),
     ],
   };
-};
+}

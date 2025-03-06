@@ -4,6 +4,6 @@ import { defineConfig } from "drizzle-kit";
 // we use wrangler to apply migrations (see package.json)
 export default defineConfig({
   out: "./src/db/migrations",
-  schema: "./src/db/schema/index.ts",
+  schema: "./src/db/schema",
   dialect: "sqlite",
 });

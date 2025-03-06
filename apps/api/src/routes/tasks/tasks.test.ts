@@ -1,7 +1,4 @@
-import {
-  applyD1Migrations,
-  env,
-} from "cloudflare:test";
+import { applyD1Migrations, env } from "cloudflare:test";
 import { testClient } from "hono/testing";
 import * as HttpStatusPhrases from "stoker/http-status-phrases";
 import { beforeAll, describe, expect, expectTypeOf, it } from "vitest";
@@ -74,7 +71,9 @@ describe("tasks routes", async () => {
     if (response.status === 422) {
       const json = await response.json();
       expect(json.error.issues[0].path[0]).toBe("id");
-      expect(json.error.issues[0].message).toBe(ZOD_ERROR_MESSAGES.EXPECTED_NUMBER);
+      expect(json.error.issues[0].message).toBe(
+        ZOD_ERROR_MESSAGES.EXPECTED_NUMBER,
+      );
     }
   });
 
@@ -134,7 +133,9 @@ describe("tasks routes", async () => {
     if (response.status === 422) {
       const json = await response.json();
       expect(json.error.issues[0].path[0]).toBe("id");
-      expect(json.error.issues[0].message).toBe(ZOD_ERROR_MESSAGES.EXPECTED_NUMBER);
+      expect(json.error.issues[0].message).toBe(
+        ZOD_ERROR_MESSAGES.EXPECTED_NUMBER,
+      );
     }
   });
 
@@ -180,7 +181,9 @@ describe("tasks routes", async () => {
     if (response.status === 422) {
       const json = await response.json();
       expect(json.error.issues[0].path[0]).toBe("id");
-      expect(json.error.issues[0].message).toBe(ZOD_ERROR_MESSAGES.EXPECTED_NUMBER);
+      expect(json.error.issues[0].message).toBe(
+        ZOD_ERROR_MESSAGES.EXPECTED_NUMBER,
+      );
     }
   });
 

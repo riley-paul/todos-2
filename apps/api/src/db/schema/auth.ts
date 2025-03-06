@@ -1,6 +1,11 @@
 import type { AdapterAccountType } from "@auth/core/adapters";
 
-import { integer, primaryKey, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import {
+  integer,
+  primaryKey,
+  sqliteTable,
+  text,
+} from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("user", {
   id: text()
@@ -29,7 +34,7 @@ export const accounts = sqliteTable(
     id_token: text("id_token"),
     session_state: text("session_state"),
   },
-  account => ({
+  (account) => ({
     compoundKey: primaryKey({
       columns: [account.provider, account.providerAccountId],
     }),
@@ -51,7 +56,7 @@ export const verificationTokens = sqliteTable(
     token: text("token").notNull(),
     expires: integer("expires", { mode: "timestamp_ms" }).notNull(),
   },
-  verificationToken => ({
+  (verificationToken) => ({
     compositePk: primaryKey({
       columns: [verificationToken.identifier, verificationToken.token],
     }),
@@ -74,7 +79,7 @@ export const authenticators = sqliteTable(
     }).notNull(),
     transports: text("transports"),
   },
-  authenticator => ({
+  (authenticator) => ({
     compositePK: primaryKey({
       columns: [authenticator.userId, authenticator.credentialID],
     }),

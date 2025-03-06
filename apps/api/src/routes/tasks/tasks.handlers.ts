@@ -8,7 +8,13 @@ import { createDb } from "@/api/db";
 import { tasks } from "@/api/db/schema";
 import { ZOD_ERROR_CODES, ZOD_ERROR_MESSAGES } from "@/api/lib/constants";
 
-import type { CreateRoute, GetOneRoute, ListRoute, PatchRoute, RemoveRoute } from "./tasks.routes";
+import type {
+  CreateRoute,
+  GetOneRoute,
+  ListRoute,
+  PatchRoute,
+  RemoveRoute,
+} from "./tasks.routes";
 
 export const list: AppRouteHandler<ListRoute> = async (c) => {
   const db = createDb(c.env);
@@ -72,7 +78,8 @@ export const patch: AppRouteHandler<PatchRoute> = async (c) => {
     );
   }
 
-  const [task] = await db.update(tasks)
+  const [task] = await db
+    .update(tasks)
     .set(updates)
     .where(eq(tasks.id, id))
     .returning();
@@ -92,8 +99,7 @@ export const patch: AppRouteHandler<PatchRoute> = async (c) => {
 export const remove: AppRouteHandler<RemoveRoute> = async (c) => {
   const db = createDb(c.env);
   const { id } = c.req.valid("param");
-  const result: D1Response = await db.delete(tasks)
-    .where(eq(tasks.id, id));
+  const result: D1Response = await db.delete(tasks).where(eq(tasks.id, id));
 
   if (result.meta.changes === 0) {
     return c.json(

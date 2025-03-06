@@ -28,7 +28,7 @@
     "@logtape/logtape": "^0.8.0",
     "@scalar/hono-api-reference": "^0.5.164",
     "@tasks-app/eslint-config": "workspace:^",
-    "drizzle-orm": "^0.38.2",
+    "drizzle-orm": "^0.38.4",
     "drizzle-zod": "^0.6.0",
     "hono": "^4.6.13",
     "nodemailer": "^6.9.16",
